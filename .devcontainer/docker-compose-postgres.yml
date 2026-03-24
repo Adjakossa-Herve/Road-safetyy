@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  road-safety-postgres:
+    image: postgres:17
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: rjlee
+      POSTGRES_PASSWORD: rjpassword
+      POSTGRES_DB: accident_idf
+
+    ports:
+      - "5888:5432"
+
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d

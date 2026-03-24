@@ -1,0 +1,29 @@
+services:
+  road-safety:
+    container_name: road-safety
+
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+
+    working_dir: /workspace
+
+    environment:
+      DB_HOST: road-safety-postgres
+      DB_PORT: 5432
+      POSTGRES_USER: rjlee
+      POSTGRES_PASSWORD: rjpassword
+      POSTGRES_DB: accident_idf
+
+    volumes:
+      - ..:/workspace:cached
+
+    command: sleep infinity
+
+    depends_on:
+      - road-safety-postgres
+
+  road-safety-postgres:
+    extends:
+      file: docker-compose-postgres.yml
+      service: road-safety-postgres

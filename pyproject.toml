@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "road-safetyy"
+version = "0.1.0"
+description = "Decision engine for emergency response prioritization in road safety incidents"
+authors = ["Hervé ADJAKOSSA <herve.adjakossa@etudiant.univ-reims.fr>"]
+packages = [ { include = "road_safety", from = "src" } ]
+readme = "README.md"
+
+[[tool.poetry.source]]
+name = "public"
+url = "https://pypi.org/simple"
+priority = "primary"
+
+[tool.poetry.scripts]
+"road-safety" = "road_safety.main:main"
+road_safety = "road_safety.main:main"
+
+[tool.poetry.plugins]
+[tool.poetry.dependencies]
+python = ">=3.14,<3.15"
+numpy = "^2.4"
+pandas = "^3.0"
+pandera = "^0.28"
+psycopg = "^3.3"
+pydantic = "^2.12"
+pydantic-settings = "^2.12"
+sqlalchemy = "^2.0"
+typer = "^0.21"
+python-dotenv = "^1.0"
+psycopg2-binary = "^2.9.11"
+folium = ">=0.18"
+
+[tool.poetry.group.dev.dependencies]
+bandit = "^1.9"
+freezegun = "^1.5"
+mypy = "^1.19"
+mypy-extensions = "^1.1"
+pip-audit = "^2.10"
+pre-commit = "^4.5"
+pytest = "^9.0"
+pytest-cov = "^7.0"
+ruff = "^0.14"
+
+[tool.coverage.run]
+source = ["road_safety"]
+omit = [
+    "*/__init__.py",
+    "*/__main__.py",
+    "*/data_access/utils.py",
+    "tests/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

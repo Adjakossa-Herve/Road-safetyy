@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Main Module",
+            "type": "python",
+            "request": "launch",
+            "module": "src.road_safety",
+            "justMyCode": true
+        }
+    ],
+    "python-envs.defaultEnvManager": "ms-python.python:system"
+}
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": ["./src"],
+  "python.terminal.activateEnvironment": true
+}
